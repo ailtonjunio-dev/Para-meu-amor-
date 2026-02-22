@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Você 💓</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:monospace;overflow:hidden;background:black;}
+
+.page{
+position:absolute;
+width:100%;
+height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+opacity:0;
+pointer-events:none;
+transition:opacity 1s ease;
+}
+
+.active{opacity:1;pointer-events:all;}
+
+.text-box{
+background:rgba(0,0,0,0.75);
+padding:25px;
+border-radius:20px;
+max-width:420px;
+color:white;
+line-height:1.8;
+font-size:15px;
+backdrop-filter:blur(5px);
+}
+
+/* BOTÃO CORAÇÃO */
+.heart-btn{
+position:absolute;
+right:40px;
+top:50%;
+transform:translateY(-50%) rotate(-45deg);
+width:85px;
+height:85px;
+background:#ff2e63;
+border:none;
+cursor:pointer;
+}
+
+.heart-btn:before,
+.heart-btn:after{
+content:"";
+width:85px;
+height:85px;
+background:#ff2e63;
+border-radius:50%;
+position:absolute;
+}
+
+.heart-btn:before{top:-42px;left:0;}
+.heart-btn:after{left:42px;top:0;}
+
+.heart-btn span{
+position:absolute;
+transform:rotate(45deg);
+color:white;
+font-weight:bold;
+top:35%;
+left:18%;
+font-size:13px;
+}
+
+/* SLOT MACHINE */
+.slot-box{
+background:black;
+padding:25px;
+border-radius:20px;
+border:3px solid white;
+box-shadow:0 0 20px rgba(255,255,255,0.4);
+}
+
+.reels{
+display:flex;
+gap:15px;
+font-size:45px;
+margin:20px 0;
+color:white;
+}
+
+.reel{
+background:white;
+color:black;
+padding:10px 15px;
+border-radius:8px;
+min-width:60px;
+}
+
+.spin-btn{
+background:white;
+color:#c70039;
+padding:12px 30px;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.big-btn{
+background:#ff2e63;
+color:white;
+padding:14px 30px;
+border-radius:10px;
+font-size:18px;
+margin-top:20px;
+cursor:pointer;
+}
+
+.hidden{display:none;}
+
+/* FOGOS */
+.fire{
+position:absolute;
+bottom:-20px;
+font-size:22px;
+animation:rise 5s linear forwards;
+}
+
+@keyframes rise{
+0%{transform:translateY(0);}
+100%{transform:translateY(-110vh);}
+}
+
+/* CHUVA */
+.rain{
+position:absolute;
+top:-20px;
+font-size:16px;
+animation:fall 4s linear forwards;
+}
+
+@keyframes fall{
+0%{transform:translateY(0);}
+100%{transform:translateY(100vh);}
+}
+
+#heartGrid{
+display:grid;
+grid-template-columns:repeat(15,1fr);
+gap:3px;
+margin-top:30px;
+opacity:0;
+}
+
+.miniHeart{
+font-size:14px;
+opacity:0;
+transition:opacity 0.3s ease;
+}
+</style>
+</head>
+<body>
+
+<!-- PÁGINA 1 -->
+<div class="page active" id="p1" style="background:url('batman.jpg') center/cover no-repeat;">
+<div class="text-box">
+𝙴𝚞 𝚗𝚊̃𝚘 𝚜𝚎𝚒 𝚎𝚖 𝚚𝚞𝚎 𝚖𝚘𝚖𝚎𝚗𝚝𝚘 𝚟𝚘𝚌𝚎̂ 𝚟𝚒𝚛𝚘𝚞 𝚝𝚊̃𝚘 𝚒𝚖𝚙𝚘𝚛𝚝𝚊𝚗𝚝𝚎 𝚙𝚛𝚊 𝚖𝚒𝚖…  
+𝙼𝚊𝚜 𝚑𝚘𝚓𝚎 𝚎𝚞 𝚜𝚎𝚒 𝚚𝚞𝚎 𝚗𝚊̃𝚘 𝚌𝚘𝚗𝚜𝚒𝚐𝚘 𝚒𝚖𝚊𝚐𝚒𝚗𝚊𝚛 𝚖𝚒𝚗𝚑𝚊 𝚟𝚒𝚍𝚊 𝚜𝚎𝚖 𝚟𝚘𝚌𝚎̂.  
+𝚅𝚘𝚌𝚎̂ 𝚖𝚎 𝚝𝚛𝚘𝚞𝚡𝚎 𝚙𝚊𝚣, 𝚕𝚞𝚣 𝚎 𝚞𝚖 𝚊𝚖𝚘𝚛 𝚚𝚞𝚎 𝚎𝚞 𝚗𝚞𝚗𝚌𝚊 𝚜𝚘𝚞𝚋𝚎 𝚚𝚞𝚎 𝚙𝚘𝚍𝚒𝚊 𝚜𝚎𝚗𝚝𝚒𝚛.
+</div>
+<button class="heart-btn" onclick="next(2)"><span>Continuar</span></button>
+</div>
+
+<!-- PÁGINA 2 -->
+<div class="page" id="p2" style="background:url('batman.jpg') center/cover no-repeat;">
+<div class="text-box">
+𝚅𝚘𝚌𝚎̂ 𝚎́ 𝚊 𝚖𝚎𝚗𝚒𝚗𝚊 𝚖𝚊𝚒𝚜 𝚒𝚗𝚌𝚛𝚒́𝚟𝚎𝚕 𝚚𝚞𝚎 𝚎𝚞 𝚓𝚊́ 𝚌𝚘𝚗𝚑𝚎𝚌𝚒.  
+𝙽𝚊̃𝚘 𝚎́ 𝚜𝚘́ 𝚙𝚘𝚛 𝚜𝚎𝚛 𝚕𝚒𝚗𝚍𝚊…  
+𝙴́ 𝚙𝚘𝚛𝚚𝚞𝚎 𝚟𝚘𝚌𝚎̂ 𝚎́ 𝚕𝚞𝚣 𝚗𝚘𝚜 𝚖𝚎𝚞𝚜 𝚍𝚒𝚊𝚜 𝚎 𝚜𝚘𝚛𝚛𝚒𝚜𝚘 𝚗𝚊𝚜 𝚖𝚒𝚗𝚑𝚊𝚜 𝚖𝚎𝚖𝚘́𝚛𝚒𝚊𝚜.
+</div>
+<button class="heart-btn" onclick="next(3)"><span>Continuar</span></button>
+</div>
+
+<!-- PÁGINA 3 SLOT -->
+<div class="page" id="p3" style="background:url('coracoes.jpg') center/cover no-repeat;">
+<h2 style="color:white;">𝙶𝚒𝚛𝚎 𝚊𝚝𝚎́ 𝚌𝚘𝚗𝚜𝚎𝚐𝚞𝚒𝚛 💞</h2>
+<div class="slot-box">
+<div class="reels">
+<div class="reel" id="r1">🍒</div>
+<div class="reel" id="r2">🍋</div>
+<div class="reel" id="r3">🍇</div>
+</div>
+<button class="spin-btn" onclick="spin()">Girar</button>
+<button class="big-btn hidden" id="cont3" onclick="next(4)">Continuar</button>
+</div>
+</div>
+
+<!-- PÁGINA 4 -->
+<div class="page" id="p4" style="background:#c70039;">
+<button class="big-btn" onclick="startBuild()">Clique Aqui</button>
+<div id="heartGrid"></div>
+<button class="big-btn hidden" id="finalBtn" onclick="next(5)">Finalizar</button>
+</div>
+
+<!-- PÁGINA 5 -->
+<div class="page" id="p5" style="background:#c70039;color:white;">
+<h2>feito por Ailton Junio 💓</h2>
+<p style="margin-top:20px;max-width:400px;">
+Eu fiz isso pensando em você, em cada detalhe.  
+Não é só um código… é um pedacinho do que eu sinto.  
+Eu te amo de verdade.
+</p>
+</div>
+
+<script>
+function next(n){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById('p'+n).classList.add('active');
+}
+
+function spin(){
+let chance=Math.random();
+let items=["🍒","🍋","🍇","🍉"];
+if(chance<=0.23){
+r1.innerHTML="💞";
+r2.innerHTML="💞";
+r3.innerHTML="💞";
+for(let i=0;i<25;i++){
+let f=document.createElement("div");
+f.className="fire";
+f.innerHTML="✨";
+f.style.left=Math.random()*100+"%";
+document.body.appendChild(f);
+setTimeout(()=>f.remove(),5000);
+}
+setTimeout(()=>cont3.classList.remove("hidden"),5000);
+}else{
+r1.innerHTML=items[Math.floor(Math.random()*4)];
+r2.innerHTML=items[Math.floor(Math.random()*4)];
+r3.innerHTML=items[Math.floor(Math.random()*4)];
+}
+}
+
+function startBuild(){
+let grid=document.getElementById("heartGrid");
+grid.innerHTML="";
+grid.style.opacity=1;
+
+let heartShape=[
+[0,1,1,0,1,1,0],
+[1,1,1,1,1,1,1],
+[1,1,1,1,1,1,1],
+[0,1,1,1,1,1,0],
+[0,0,1,1,1,0,0],
+[0,0,0,1,0,0,0]
+];
+
+let cells=[];
+heartShape.forEach((row,i)=>{
+row.forEach((val,j)=>{
+if(val===1){
+let span=document.createElement("span");
+span.className="miniHeart";
+span.innerHTML="💓";
+grid.appendChild(span);
+cells.push(span);
+}
+});
+});
+
+cells.forEach((c,i)=>{
+setTimeout(()=>c.style.opacity=1,i*100);
+});
+
+setTimeout(()=>finalBtn.classList.remove("hidden"),cells.length*100+500);
+}
+</script>
+
+</body>
+</html>
